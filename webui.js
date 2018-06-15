@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var redis = require('redis');
 
-var client = redis.createClient(6379, 'redis');
+var client = redis.createClient(6379, 'redis-master');
 client.on("error", function (err) {
     console.error("Redis error", err);
 });
@@ -29,4 +29,3 @@ app.use(express.static('files'));
 var server = app.listen(80, function () {
     console.log('WEBUI running on port 80');
 });
-
