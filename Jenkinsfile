@@ -21,9 +21,11 @@ node("jnlp-slave"){
     }
 }
 
-post {
-    success{
+pipeline {
+    stage("checkout deploy script"){
         git "${DEPLOY_REPO}"
+    }
+    stage("deploy"){
         sh "deploy.sh webui cicd ${IMAGE} 30080"
     }
 }
