@@ -1,10 +1,10 @@
-node("jnlp-slave"){
-    def REPO = "https://github.com/hbbpb/demo-webui"
-    def NAME = "webui"
-    def HARBOR_URL = "10.202.129.133"
-    def HARBOR_PROJECT = "library"
-    def IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${NAME}:${BUILD_NUMBER}"
+def REPO = "https://github.com/hbbpb/demo-webui"
+def NAME = "webui"
+def HARBOR_URL = "10.202.129.133"
+def HARBOR_PROJECT = "library"
+def IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${NAME}:${BUILD_NUMBER}"
 
+node("jnlp-slave"){
     stage("checkout"){
         git "${REPO}"
     }
