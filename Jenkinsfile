@@ -25,6 +25,6 @@ node {
     }
 
     stage("deploy"){
-        sh "./deploy.sh webui cicd ${IMAGE} 30080"
+        sh "./deploy.sh webui dev ${IMAGE} 30080"
     }
 }
