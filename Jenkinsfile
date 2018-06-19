@@ -5,7 +5,7 @@ def HARBOR_PROJECT = "library"
 def IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${NAME}:${BUILD_NUMBER}"
 def DEPLOY_REPO = "https://github.com/hbbpb/demo-deploy"
 
-pipeline {
+node {
     stage("checkout"){
         git "${REPO}"
     }
