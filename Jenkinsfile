@@ -3,8 +3,9 @@ def NAME = "webui"
 def HARBOR_URL = "10.202.129.133"
 def HARBOR_PROJECT = "library"
 def IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${NAME}:${BUILD_NUMBER}"
+def DEPLOY_REPO = "https://github.com/hbbpb/demo-deploy"
 
-node("jnlp-slave"){
+pipeline {
     stage("checkout"){
         git "${REPO}"
     }
@@ -17,5 +18,13 @@ node("jnlp-slave"){
         }
 
         sh "docker push ${IMAGE}"
+    }
+
+    stage("checkout deploy script"){
+        git "${DEPLOY_REPO}"
+    }
+
+    stage("deploy"){
+        sh "deploy.sh webui cicd ${IMAGE} 30080"
     }
 }
